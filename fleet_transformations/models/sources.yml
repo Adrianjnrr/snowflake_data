@@ -10,6 +10,9 @@ sources:
       - name: STG_DRIVERS
       - name: STG_TRUCKS
       - name: STG_LOADS
+      - name: STG_TRAILERS
+      - name: STG_SAFETY_INCIDENTS
+      - name: STG_ROUTES
       
       
       

@@ -68,6 +68,103 @@ models:
         tests:
           - not_null
       
+  - name: stg_trailers_clean
+    description: "Cleaned trailers data."
+
+    columns:
+      - name: trailer_id
+        description: "Unique identifier for each trailer."
+        tests:
+          - unique
+          - not_null
+
+      - name: vin
+        description: "Vehicle Identification Number of the trailer."
+        tests:
+          - unique
+          - not_null
+
+      - name: trailer_number
+        description: "Unique number assigned to the trailer."
+        tests:
+          - not_null
+
+  - name: stg_safety_incidents_clean
+    description: "Cleaned safety incidents data."
+
+    columns:
+      - name: incident_id
+        description: "Unique identifier for each safety incident."
+        tests:
+          - unique
+          - not_null
+
+      - name: incident_date
+        description: "Date the safety incident occurred."
+        tests:
+          - not_null
+
+      - name: driver_id
+        description: "Unique identifier for the driver involved in the incident."
+        tests:
+          - not_null  
+
+      - name: incident_type
+        description: "Type of safety incident."
+        tests:
+          - not_null
+
+      - name: description
+        description: "Detailed description of the safety incident."
+        tests:
+          - not_null
+
+
+      - name: injury_flag
+        description: "Flag indicating if the incident resulted in an injury."
+        tests:
+          - not_null
+
+      - name: preventable_flag
+        description: "Flag indicating if the incident was preventable."
+        tests:
+          - not_null                      
+
+  - name: stg_routes_clean
+    description: "Cleaned routes data."
+
+    columns:
+      - name: route_id
+        description: "Unique identifier for each route."
+        tests:
+          - unique
+          - not_null
+
+      - name: origin_state
+        description: "Starting location of the route."
+        tests:
+          - not_null
+
+      - name: destination_city
+        description: "Ending location of the route."
+        tests:
+          - not_null
+
+      - name: destination_state
+        description: "Ending location of the route."
+        tests:
+          - not_null
+
+      - name: typical_transit_days
+        description: "Typical number of days for transit on this route."
+        tests:
+          - not_null
+
+      - name: typical_distance_miles
+        description: "Typical distance in miles for this route."
+        tests:
+          - not_null    
+                  
 
 
       
