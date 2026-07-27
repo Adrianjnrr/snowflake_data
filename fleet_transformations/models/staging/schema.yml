@@ -20,3 +20,54 @@ models:
         description: "Driver's date of birth."
         tests:
           - not_null
+
+  - name: stg_trucks_clean
+    description: "Cleaned truck data."
+
+    columns:
+      - name: trip_id
+        description: "Unique identifier for each trip."
+        tests:
+          - unique
+          - not_null          
+
+      - name: dispatch_date
+        description: "Date the trip was dispatched."
+        tests:
+          - not_null
+  - name: stg_loads_clean
+    description: "Cleaned loads data."
+
+    columns:
+      - name: load_id
+        description: "Unique identifier for each load."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Unique identifier for each customer."
+        tests:
+        - not_null
+
+      - name: load_date
+        description: "Date the load was created."
+        tests:
+          - not_null
+  - name: stg_trips_clean
+    description: "Cleaned trips data."
+    columns:
+      - name: trip_id
+        description: "Unique identifier for each trip."
+        tests:
+          - unique
+          - not_null
+
+      - name: dispatch_date
+        description: "Date the trip was dispatched."
+        tests:
+          - not_null
+      
+
+
+      

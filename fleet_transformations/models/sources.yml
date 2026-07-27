@@ -8,3 +8,12 @@ sources:
     tables:
       - name: STG_TRIPS
       - name: STG_DRIVERS
+      - name: STG_TRUCKS
+      - name: STG_LOADS
+      
+      
+      
+
+
+
+    
