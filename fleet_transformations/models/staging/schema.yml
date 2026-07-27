@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_drivers_clean
+    description: "Cleaned driver data."
+
+    columns:
+      - name: driver_id
+        description: "Unique identifier for each driver."
+        tests:
+          - unique
+          - not_null
+
+      - name: hire_date
+        description: "Date the driver was hired."
+        tests:
+          - not_null
+
+      - name: date_of_birth
+        description: "Driver's date of birth."
+        tests:
+          - not_null

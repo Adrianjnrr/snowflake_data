@@ -1,0 +1,12 @@
+
+target/
+dbt_packages/
+logs/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# OS files
+.DS_Store

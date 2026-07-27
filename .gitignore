@@ -1,7 +1,25 @@
-.venv/
-.venv-1/
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+.venv/
+venv/
+env/
+
+# dbt
+target/
+dbt_packages/
+logs/
+
+# Environment
 .env
-.vscode/
+
+# Snowflake keys
+*.p8
+*.pem
+*.key
+
+# macOS
 .DS_Store
+
+# VS Code
+.vscode/

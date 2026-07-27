@@ -18,10 +18,14 @@ tables = [
 for file_name, table_name in tables:
     print(f"Loading {file_name}...")
 
-    load_csv_table(
-        session=session,
-        file_path=f"data/fleet/{file_name}",
-        target_table_name=table_name,
-    )
+    try:
+        load_csv_table(
+            session=session,
+            file_path=f"data/fleet/{file_name}",
+            target_table_name=table_name,
+        )
+        print(f"✅ Finished {table_name}")
+    except Exception as e:
+        print(f"❌ Failed to load {table_name}: {e}")
 
 session.close()    

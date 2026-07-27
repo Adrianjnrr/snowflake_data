@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: DE_PROJECT
+    schema: STAGING
+
+    tables:
+      - name: STG_TRIPS
+      - name: STG_DRIVERS
