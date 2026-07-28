@@ -13,9 +13,12 @@ sources:
       - name: STG_TRAILERS
       - name: STG_SAFETY_INCIDENTS
       - name: STG_ROUTES
-      
-      
-      
+      - name: STG_MAINTENANCE_RECORDS
+      - name: STG_FUEL_PURCHASES
+      - name: STG_FACILITIES
+      - name: STG_DRIVER_MONTHLY_METRICS
+      - name: STG_DELIVERY_EVENTS
+
 
 
 
