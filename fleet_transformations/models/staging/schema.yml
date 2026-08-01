@@ -299,7 +299,30 @@ models:
       - name: dock_doors
         description: "Number of dock doors available at the facility."
         tests:
-          - not_null                      
+          - not_null       
+  - name: stg_weather_clean
+    description: "Cleaned weather data."
+    columns:
+      - name: weather_time 
+        description: "Timestamp of the weather data associated with the facility."
+        tests:
+          - not_null
+
+      - name: facility_id
+        description: "Unique identifier for the facility associated with the weather data."
+        tests:
+          - not_null
+              
+
+      - name: precipitation 
+        description: "Amount of precipitation recorded at the facility's location."
+        tests:
+          - not_null
+
+      - name: temperature 
+        description: "Temperature recorded at the facility's location."
+        tests:
+          - not_null                           
 
   - name: stg_driver_monthly_metrics_clean
     description: "Cleaned driver monthly metrics data."
@@ -364,3 +387,49 @@ models:
         description: "Datetime for a scheduled event."
         tests:
           - not_null
+
+  - name: stg_customers_clean
+    description: "Cleaned customers data."
+
+    columns:
+      - name: customer_id
+        description: "Unique identifier for event."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_name
+        description: "name of customers."
+        tests:
+          - not_null   
+
+      - name: customer_type
+        description: "customers type"
+        tests:
+          - not_null       
+
+      - name: credit_terms_days
+        description: "credit terms date of customers."
+        tests:
+          - not_null  
+
+
+      - name: primary_freight_type
+        description: "customers freight type."
+        tests:
+          - not_null    
+
+      - name: account_status
+        description: "status of customers."
+        tests:
+          - not_null                
+
+      - name: contract_start_date
+        description: "customers start date."
+        tests:
+          - not_null       
+
+      - name: annual_revenue_potential
+        description: "annual revenue of customers."
+        tests:
+          - not_null       

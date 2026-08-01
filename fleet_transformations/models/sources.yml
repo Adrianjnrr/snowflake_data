@@ -18,6 +18,8 @@ sources:
       - name: STG_FACILITIES
       - name: STG_DRIVER_MONTHLY_METRICS
       - name: STG_DELIVERY_EVENTS
+      - name: STG_CUSTOMERS
+      - name: STG_WEATHER
 
 
 

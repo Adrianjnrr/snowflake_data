@@ -31,7 +31,7 @@ def load_postgres_table(source_table_name, target_table_name, target_schema):
 
    
     # Snowflake connection
-    session = get_snowflake_session()
+    session = get_snowflake_session(target_schema)
     
     
     # Load to Snowflake

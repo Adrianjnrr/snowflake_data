@@ -1,4 +1,4 @@
-from postgres_loader import load_postgres_table
+from ingestion.postgres.postgres_loader import load_postgres_table
 
 load_postgres_table(
     source_table_name = "customers", 
