@@ -1,15 +1,13 @@
 select 
-trim(trip_id) as trip_id,
 trim(truck_id) as truck_id,
-trim(driver_id) as driver_id,
-trim(load_id) as load_id,
-trim(trailer_id) as trailer_id,
-
-cast(dispatch_date as date) as dispatch_date,
-cast(actual_distance_miles as float) as actual_distance_miles,
-cast(actual_duration_hours as float) as actual_duration_hours,
-cast(fuel_gallons_used as float) as fuel_gallons_used,
-cast(average_mpg as float) as average_mpg,
-cast(idle_time_hours as float) as idle_time_hours
+trim(unit_number) as unit_number,
+trim(vin) as vin,
+trim(make) as make,
+trim(cast(model_year as string)) as model_year,
+trim(cast(acquisition_date as date)) as acquisition_date,
+trim(cast(acquisition_mileage as int)) as acquisition_mileage,
+cast(fuel_type as string) as fuel_type,
+trim(status) as status,
+trim(home_terminal) as home_terminal
 
 from {{ source('staging', 'STG_TRUCKS')}}

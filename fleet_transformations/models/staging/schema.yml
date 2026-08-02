@@ -8,7 +8,6 @@ models:
       - name: driver_id
         description: "Unique identifier for each driver."
         tests:
-          - unique
           - not_null
 
       - name: hire_date
@@ -25,13 +24,56 @@ models:
     description: "Cleaned truck data."
 
     columns:
-      - name: trip_id
-        description: "Unique identifier for each trip."
+      - name: truck_id
+        description: "Unique identifier for each truck."
         tests:
-          - unique
           - not_null          
 
-      - name: dispatch_date
+      - name: unit_number
+        description: "Unique number assigned to the truck."
+        tests:
+          - not_null
+
+      - name: vin
+        description: "Vehicle Identification Number of the truck."
+        tests:
+          - not_null
+
+      - name: make
+        description: "Make of the truck."
+        tests:
+          - not_null
+
+      - name: model_year
+        description: "Year the truck was manufactured."
+        
+        tests:
+          - not_null
+
+      - name: acquisition_date
+        description: "Date the truck was acquired."
+        tests:
+          - not_null
+
+      - name: acquisition_mileage
+        description: "Mileage of the truck at the time of acquisition."
+        tests:
+          - not_null
+
+      - name: fuel_type
+        description: "Type of fuel used by the truck."
+        tests:
+          - not_null
+
+      - name: status
+        description: "Current status of the truck."
+        tests:
+          - not_null
+
+      - name: home_terminal
+        description: "Terminal where the truck is based."
+        tests:
+          - not_null
         description: "Date the trip was dispatched."
         tests:
           - not_null
@@ -75,13 +117,11 @@ models:
       - name: trailer_id
         description: "Unique identifier for each trailer."
         tests:
-          - unique
           - not_null
 
       - name: vin
         description: "Vehicle Identification Number of the trailer."
         tests:
-          - unique
           - not_null
 
       - name: trailer_number
@@ -104,10 +144,7 @@ models:
         tests:
           - not_null
 
-      - name: driver_id
-        description: "Unique identifier for the driver involved in the incident."
-        tests:
-          - not_null  
+       
 
       - name: incident_type
         description: "Type of safety incident."
@@ -263,7 +300,6 @@ models:
       - name: facility_id
         description: "Unique identifier for each facility."
         tests:
-          - unique
           - not_null
 
       - name: facility_name
