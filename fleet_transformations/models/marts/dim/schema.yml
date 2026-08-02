@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim_drivers
+    columns:
+
+      - name: driver_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_customers
+    columns:
+
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+  - name: dim_trailer
+    columns:
+
+      - name: trailer_id
+        tests:
+          - unique
+          - not_null               
+
+  - name: dim_routes
+    columns:
+
+      - name: route_id
+        tests:
+          - unique
+          - not_null        
+
+  - name: dim_facility
+    columns:
+
+      - name: facility_id
+        tests:
+          - unique
+          - not_null 
+
+  - name: dim_date
+    columns:
+    - name: date_key
+      tests:
+        - unique
+        - not_null             
+
+
+  
