@@ -26,6 +26,7 @@ def update_metadata(
     rows_loaded,
     status,
     pipeline_run_id,
+    task_name
 ):
 
     session.sql(f"""
@@ -36,7 +37,8 @@ def update_metadata(
             rows_loaded,
             status,
             pipeline_run_id,
-            processed_at
+            processed_at,
+            task_name
         )
         VALUES
         (
@@ -45,6 +47,7 @@ def update_metadata(
             {rows_loaded},
             '{status}',
             '{pipeline_run_id}',
-            CURRENT_TIMESTAMP()
+            CURRENT_TIMESTAMP(),
+            '{task_name}'
         )
     """).collect()

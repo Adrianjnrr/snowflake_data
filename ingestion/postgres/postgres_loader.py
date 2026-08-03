@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from ingestion.utils.metadata import get_last_processed_key
 from dotenv import load_dotenv
 from ingestion.utils.metadata import update_metadata
-import uuid
+
 import pandas as pd
 import os
 
@@ -12,7 +12,7 @@ load_dotenv()
 
 
 
-def load_postgres_table(source_table_name, target_table_name, target_schema, primary_key):
+def load_postgres_table(source_table_name,pipeline_run_id,task_name, target_table_name, target_schema, primary_key):
    
     # PostgreSQL connection
    
@@ -47,8 +47,21 @@ def load_postgres_table(source_table_name, target_table_name, target_schema, pri
     print(df.head())
     print(df.shape)
     
+    
     if df.empty:
+        update_metadata(
+            session=session,
+            table_name=target_table_name,
+            last_processed_key=last_processed_key,
+            rows_loaded=len(df),
+            status="SUCCESS",
+            pipeline_run_id=pipeline_run_id,
+            task_name=task_name
+        
+        )
+
         print(f"✅ No new records for {target_table_name}")
+
         session.close()
         engine.dispose()
         return
@@ -66,13 +79,23 @@ def load_postgres_table(source_table_name, target_table_name, target_schema, pri
 
     snowpark_df.write.mode("append").save_as_table(f"{database}.{target_schema}.{target_table_name}")
 
+    
+    print(f"Pipeline Run ID: {pipeline_run_id}")
+    print(f"Task Name: {task_name}")
+
+    print("Columns:", df.columns.tolist())
+    print("Primary key:", primary_key)
+    print("Max key:", df[primary_key].max())
+
     update_metadata(
     session=session,
     table_name=target_table_name,
     last_processed_key=df[primary_key].max(),
     rows_loaded=len(df),
     status="SUCCESS",
-    pipeline_run_id=str(uuid.uuid4())
+    pipeline_run_id=pipeline_run_id,
+    task_name=task_name
+
 )
     print(f"✅ {target_table_name} loaded successfully.")
 
