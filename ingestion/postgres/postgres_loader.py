@@ -11,7 +11,6 @@ import os
 load_dotenv()
 
 
-mfa_code = input("Enter your 6-digit MFA code: ")
 
 def load_postgres_table(source_table_name, target_table_name, target_schema, primary_key):
    

@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 venv/
 env/
+.venv-1
 
 # dbt
 target/
@@ -12,8 +13,10 @@ logs/
 
 # Environment
 .env
+.venv-airflow/
 
 # Snowflake keys
+keys/
 *.p8
 *.pem
 *.key
@@ -23,3 +26,4 @@ logs/
 
 # VS Code
 .vscode/
+
