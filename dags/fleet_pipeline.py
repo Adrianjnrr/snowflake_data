@@ -35,9 +35,7 @@ with DAG(
     postgres_tasks = {}
     csv_tasks = {}
 
-    # -------------------------------
-    # PostgreSQL Tasks
-    # -------------------------------
+    
     for task in POSTGRES_TASKS:
 
         postgres_tasks[task] = BashOperator(
@@ -50,9 +48,7 @@ with DAG(
             """,
         )
 
-    # -------------------------------
-    # CSV Tasks
-    # -------------------------------
+    
     for task in CSV_TASKS:
 
         csv_tasks[task] = BashOperator(
@@ -65,12 +61,21 @@ with DAG(
             """,
         )
 
-    # -------------------------------
-    # Dependencies
-    # -------------------------------
+    weather_task = BashOperator(
+    task_id="load_weather_api",
+    cwd=PROJECT_DIR,
+    bash_command=f"""
+    {PYTHON} -m ingestion.api.load_weather_api \
+    --pipeline-run-id "{{{{ run_id }}}}" \
+    --task-name "load_weather_api"
+    """,
+    )
 
-    # Wait for ALL PostgreSQL tasks to finish
-    # before starting ANY CSV task.
+    
     for postgres_task in postgres_tasks.values():
+
         for csv_task in csv_tasks.values():
             postgres_task >> csv_task
+
+    for csv_task in csv_tasks.values():
+        csv_task >> weather_task        
